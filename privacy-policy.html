@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プライバシーポリシー - 投資アプリ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        :root {
+            --primary-color: #6750A4;
+            --secondary-color: #625B71;
+            --background-color: #FEF7FF;
+            --surface-color: #FFFFFF;
+            --on-surface-color: #1D1B20;
+            --outline-color: #79747E;
+            --success-color: #4CAF50;
+            --warning-color: #FF9800;
+            --error-color: #F44336;
+            --info-color: #2196F3;
+            --border-radius: 12px;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.7;
+            color: var(--on-surface-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #7C4DFF);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .update-info {
+            background: var(--surface-color);
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--outline-color);
+        }
+
+        .update-info span {
+            background: var(--info-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        nav {
+            background: var(--surface-color);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-item:hover {
+            background-color: var(--background-color);
+            color: var(--primary-color);
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .section {
+            background: var(--surface-color);
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin: 25px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section h4 {
+            color: var(--on-surface-color);
+            font-size: 1rem;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        .section ul, .section ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #E8F5E8, #C8E6C8);
+            border-left: 4px solid var(--success-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .highlight-box h4 {
+            color: var(--success-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+            border-left: 4px solid var(--warning-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box h4 {
+            color: #F57C00;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+            border-left: 4px solid var(--info-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .info-box h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--outline-color);
+        }
+
+        .data-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: var(--background-color);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-color), #7C4DFF);
+            color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .contact-section h2 {
+            color: white;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--primary-color);
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .button:hover {
+            background: var(--background-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .toc {
+            background: var(--background-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .toc h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .toc a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-menu {
+                gap: 10px;
+            }
+            
+            .nav-item {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .data-table {
+                font-size: 0.9rem;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>
+                <span class="material-icons" style="font-size: 2.5rem;">privacy_tip</span>
+                プライバシーポリシー
+            </h1>
+            <p>お客様の個人情報保護に関する取り組みについて</p>
+        </div>
+    </header>
+
+    <div class="update-info">
+        <div class="container">
+            <span><span class="material-icons" style="font-size: 1rem; vertical-align: middle;">update</span> 最終更新日：2024年7月1日</span>
+        </div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <div class="nav-menu">
+                <a href="#overview" class="nav-item">概要</a>
+                <a href="#collection" class="nav-item">収集する情報</a>
+                <a href="#usage" class="nav-item">利用目的</a>
+                <a href="#sharing" class="nav-item">第三者提供</a>
+                <a href="#security" class="nav-item">セキュリティ</a>
+                <a href="#rights" class="nav-item">お客様の権利</a>
+                <a href="#contact" class="nav-item">お問い合わせ</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="toc">
+                <h3><span class="material-icons">list</span>目次</h3>
+                <ul>
+                    <li><a href="#overview">1. プライバシーポリシーについて</a></li>
+                    <li><a href="#collection">2. 収集する個人情報</a></li>
+                    <li><a href="#usage">3. 個人情報の利用目的</a></li>
+                    <li><a href="#sharing">4. 第三者への提供</a></li>
+                    <li><a href="#security">5. セキュリティ対策</a></li>
+                    <li><a href="#retention">6. 個人情報の保存期間</a></li>
+                    <li><a href="#rights">7. お客様の権利</a></li>
+                    <li><a href="#cookies">8. Cookieについて</a></li>
+                    <li><a href="#children">9. 未成年者について</a></li>
+                    <li><a href="#changes">10. プライバシーポリシーの変更</a></li>
+                    <li><a href="#contact">11. お問い合わせ</a></li>
+                </ul>
+            </div>
+
+            <section id="overview" class="section">
+                <h2><span class="material-icons">info</span>プライバシーポリシーについて</h2>
+                <p>投資アプリ（以下「当アプリ」）は、お客様の個人情報の保護を重要視し、個人情報の保護に関する法律（個人情報保護法）および関連する法令・規則を遵守いたします。</p>
+                
+                <p>本プライバシーポリシーは、当アプリがお客様の個人情報をどのように収集、利用、保護するかについて説明するものです。</p>
+                
+                <div class="highlight-box">
+                    <h4><span class="material-icons">verified_user</span>当社の基本方針</h4>
+                    <ul>
+                        <li>お客様の個人情報は、明確な目的のためにのみ収集・利用します</li>
+                        <li>必要最小限の情報のみを収集します</li>
+                        <li>適切なセキュリティ対策を実施します</li>
+                        <li>お客様の同意なく第三者に提供することはありません</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="collection" class="section">
+                <h2><span class="material-icons">data_usage</span>収集する個人情報</h2>
+                
+                <h3><span class="material-icons">smartphone</span>自動的に収集される情報</h3>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>情報の種類</th>
+                            <th>収集目的</th>
+                            <th>収集方法</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>端末情報</td>
+                            <td>アプリの動作確認・改善</td>
+                            <td>アプリ起動時に自動収集</td>
+                        </tr>
+                        <tr>
+                            <td>利用統計情報</td>
+                            <td>機能改善・障害対応</td>
+                            <td>アプリ利用時に自動収集</td>
+                        </tr>
+                        <tr>
+                            <td>エラーログ</td>
+                            <td>問題の特定・修正</td>
+                            <td>エラー発生時に自動収集</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3><span class="material-icons">person</span>お客様が入力される情報</h3>
+                
+                <h4>積立目標に関する情報</h4>
+                <ul>
+                    <li>目標名</li>
+                    <li>目標金額</li>
+                    <li>月々の積立予定額</li>
+                    <li>目標達成予定日</li>
+                    <li>実際の積立額（任意入力）</li>
+                </ul>
+
+                <h4>ポートフォリオシミュレーションに関する情報</h4>
+                <ul>
+                    <li>シミュレーション名</li>
+                    <li>投資期間</li>
+                    <li>月々の投資予定額</li>
+                    <li>期待リターン率</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4><span class="material-icons">security</span>重要なお知らせ</h4>
+                    <p>当アプリは、以下の情報は一切収集いたしません：</p>
+                    <ul>
+                        <li>実際の金融機関口座情報</li>
+                        <li>クレジットカード情報</li>
+                        <li>社会保障番号やマイナンバー</li>
+                        <li>実際の投資履歴や取引データ</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="usage" class="section">
+                <h2><span class="material-icons">assignment</span>個人情報の利用目的</h2>
+                
+                <p>収集した個人情報は、以下の目的でのみ利用いたします：</p>
+
+                <h3><span class="material-icons">trending_up</span>サービス提供のため</h3>
+                <ul>
+                    <li>積立目標の管理機能の提供</li>
+                    <li>ポートフォリオシミュレーション機能の提供</li>
+                    <li>お客様のデータの保存・管理</li>
+                    <li>計算結果の表示</li>
+                </ul>
+
+                <h3><span class="material-icons">build</span>サービス改善のため</h3>
+                <ul>
+                    <li>アプリの機能改善・新機能開発</li>
+                    <li>ユーザビリティの向上</li>
+                    <li>バグの修正・動作改善</li>
+                    <li>利用統計の分析（個人を特定しない形で）</li>
+                </ul>
+
+                <h3><span class="material-icons">support</span>カスタマーサポートのため</h3>
+                <ul>
+                    <li>お客様からのお問い合わせへの対応</li>
+                    <li>技術的な問題の解決支援</li>
+                    <li>利用方法に関するサポート</li>
+                </ul>
+
+                <div class="warning-box">
+                    <h4><span class="material-icons">warning</span>利用目的の制限</h4>
+                    <p>上記以外の目的で個人情報を利用する場合は、事前にお客様の同意を得るものとします。</p>
+                </div>
+            </section>
+
+            <section id="sharing" class="section">
+                <h2><span class="material-icons">share</span>第三者への提供</h2>
+                
+                <p>当社は、以下の場合を除き、お客様の個人情報を第三者に提供することはありません：</p>
+
+                <h3><span class="material-icons">gavel</span>法令に基づく場合</h3>
+                <ul>
+                    <li>法令により開示が義務付けられている場合</li>
+                    <li>裁判所、警察等の公的機関から要請があった場合</li>
+                    <li>お客様または第三者の生命、身体、財産の保護のために必要な場合</li>
+                </ul>
+
+                <h3><span class="material-icons">business</span>業務委託の場合</h3>
+                <p>以下の業務において、個人情報の取り扱いを外部業者に委託する場合があります：</p>
+                <ul>
+                    <li>データの保存・管理（クラウドサービス）</li>
+                    <li>アプリの保守・運用</li>
+                    <li>カスタマーサポート業務</li>
+                </ul>
+                
+                <div class="info-box">
+                    <h4><span class="material-icons">verified_user</span>委託先の管理</h4>
+                    <p>業務委託先には、当社と同等以上の個人情報保護対策を義務付け、適切な監督を行います。</p>
+                </div>
+
+                <h3><span class="material-icons">analytics</span>統計データの利用</h3>
+                <p>個人を特定できない形に加工した統計データについては、サービス改善のために利用する場合があります。</p>
+            </section>
+
+            <section id="security" class="section">
+                <h2><span class="material-icons">security</span>セキュリティ対策</h2>
+                
+                <p>当社では、お客様の個人情報を安全に保護するため、以下のセキュリティ対策を実施しています：</p>
+
+                <h3><span class="material-icons">lock</span>技術的対策</h3>
+                <ul>
+                    <li><strong>データ暗号化：</strong>保存データおよび通信データの暗号化</li>
+                    <li><strong>アクセス制限：</strong>個人情報へのアクセス権限を必要最小限に制限</li>
+                    <li><strong>定期的な脆弱性診断：</strong>システムの安全性を定期的に確認</li>
+                    <li><strong>セキュリティアップデート：</strong>最新のセキュリティパッチの適用</li>
+                </ul>
+
+                <h3><span class="material-icons">people</span>組織的対策</h3>
+                <ul>
+                    <li><strong>社員教育：</strong>個人情報保護に関する定期的な教育・研修</li>
+                    <li><strong>アクセス管理：</strong>個人情報にアクセスできる従業員の限定</li>
+                    <li><strong>監査：</strong>個人情報の取り扱い状況の定期的な監査</li>
+                    <li><strong>インシデント対応：</strong>セキュリティ事故発生時の迅速な対応体制</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4><span class="material-icons">local_police</span>データ保護の仕組み</h4>
+                    <p>お客様のデータは以下の方法で保護されています：</p>
+                    <ul>
+                        <li>端末内での暗号化保存</li>
+                        <li>通信時のSSL/TLS暗号化</li>
+                        <li>定期的なバックアップとデータ整合性チェック</li>
+                        <li>不正アクセス検知システムの導入</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="retention" class="section">
+                <h2><span class="material-icons">schedule</span>個人情報の保存期間</h2>
+                
+                <p>個人情報の保存期間は、利用目的に応じて以下のように設定しています：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>情報の種類</th>
+                            <th>保存期間</th>
+                            <th>削除条件</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>積立目標データ</td>
+                            <td>アプリ削除まで</td>
+                            <td>ユーザーによる手動削除またはアプリアンインストール</td>
+                        </tr>
+                        <tr>
+                            <td>シミュレーションデータ</td>
+                            <td>アプリ削除まで</td>
+                            <td>ユーザーによる手動削除またはアプリアンインストール</td>
+                        </tr>
+                        <tr>
+                            <td>利用統計情報</td>
+                            <td>最大1年間</td>
+                            <td>定期的な自動削除</td>
+                        </tr>
+                        <tr>
+                            <td>エラーログ</td>
+                            <td>最大6ヶ月間</td>
+                            <td>定期的な自動削除</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <h4><span class="material-icons">delete</span>データの削除について</h4>
+                    <p>保存期間を経過した個人情報は、安全な方法で完全に削除いたします。お客様ご自身でもアプリ内からデータを削除することができます。</p>
+                </div>
+            </section>
+
+            <section id="rights" class="section">
+                <h2><span class="material-icons">account_balance</span>お客様の権利</h2>
+                
+                <p>お客様は、ご自身の個人情報について以下の権利を有しています：</p>
+
+                <h3><span class="material-icons">visibility</span>開示請求権</h3>
+                <p>当社が保有するお客様の個人情報の開示を請求することができます。</p>
+
+                <h3><span class="material-icons">edit</span>訂正・削除請求権</h3>
+                <p>個人情報に誤りがある場合、訂正または削除を請求することができます。</p>
+
+                <h3><span class="material-icons">block</span>利用停止請求権</h3>
+                <p>個人情報の利用または第三者への提供の停止を請求することができます。</p>
+
+                <h3><span class="material-icons">how_to_reg</span>権利行使の方法</h3>
+                <p>これらの権利を行使される場合は、以下の方法でお申し出ください：</p>
+                <ul>
+                    <li>アプリ内の設定画面から直接操作</li>
+                    <li>カスタマーサポートへのお問い合わせ</li>
+                    <li>メールでのご連絡</li>
+                </ul>
+
+                <div class="warning-box">
+                    <h4><span class="material-icons">info</span>権利行使の制限</h4>
+                    <p>法令により権利行使が制限される場合や、他のお客様の権利を侵害する恐れがある場合には、ご要望にお応えできない場合があります。</p>
+                </div>
+            </section>
+
+            <section id="cookies" class="section">
+                <h2><span class="material-icons">cookie</span>Cookieについて</h2>
+                
+                <p>当アプリでは、より良いサービス提供のため、以下の技術を使用する場合があります：</p>
+
+                <h3><span class="material-icons">storage</span>ローカルストレージ</h3>
+                <ul>
+                    <li><strong>目的：</strong>お客様の設定情報やデータの保存</li>
+                    <li><strong>保存期間：</strong>アプリ削除まで</li>
+                    <li><strong>無効化：</strong>アプリ削除により無効化可能</li>
+                </ul>
+
+                <h3><span class="material-icons">analytics</span>分析ツール</h3>
+                <p>アプリの利用状況を把握するため、匿名化された分析データを収集する場合があります。</p>
+                
+                <div class="info-box">
+                    <h4><span class="material-icons">settings</span>設定の変更</h4>
+                    <p>これらの機能は、お客様の端末設定やアプリ設定から無効化することができます。</p>
+                </div>
+            </section>
+
+            <section id="children" class="section">
+                <h2><span class="material-icons">child_care</span>未成年者について</h2>
+                
+                <p>当アプリは、13歳未満のお子様を対象としたサービスではありません。</p>
+
+                <h3><span class="material-icons">family_restroom</span>保護者の方へ</h3>
+                <ul>
+                    <li>13歳未満のお子様が当アプリを利用される場合は、保護者の方の同意が必要です</li>
+                    <li>お子様の個人情報が誤って収集された場合は、速やかにご連絡ください</li>
+                    <li>確認後、該当する情報を削除いたします</li>
+                </ul>
+
+                <div class="warning-box">
+                    <h4><span class="material-icons">warning</span>投資教育について</h4>
+                    <p>当アプリは投資シミュレーション機能を含んでおりますが、実際の投資を推奨するものではありません。未成年者の利用については、保護者の方の適切な指導のもとで行ってください。</p>
+                </div>
+            </section>
+
+            <section id="changes" class="section">
+                <h2><span class="material-icons">update</span>プライバシーポリシーの変更</h2>
+                
+                <p>当社は、法令の変更やサービス内容の変更に伴い、本プライバシーポリシーを変更する場合があります。</p>
+
+                <h3><span class="material-icons">notification_important</span>変更の通知方法</h3>
+                <ul>
+                    <li>重要な変更の場合：アプリ内通知およびメール通知</li>
+                    <li>軽微な変更の場合：Webサイトでの公開</li>
+                    <li>変更日の30日前までに事前通知</li>
+                </ul>
+
+                <h3><span class="material-icons">history</span>変更履歴</h3>
+                <p>プライバシーポリシーの変更履歴は、当社Webサイトで確認できます。</p>
+
+                <div class="highlight-box">
+                    <h4><span class="material-icons">check_circle</span>お客様の対応</h4>
+                    <p>変更内容にご同意いただけない場合は、アプリの利用を停止し、保存されているデータを削除することができます。</p>
+                </div>
+            </section>
+
+            <div class="contact-section">
+                <h2><span class="material-icons">contact_support</span>お問い合わせ</h2>
+                <p>本プライバシーポリシーに関するご質問やご意見、個人情報に関するお問い合わせは、以下までご連絡ください。</p>
+                
+                <div style="margin: 25px 0;">
+                    <p><strong>投資アプリ カスタマーサポート</strong></p>
+                    <p>メールアドレス: privacy@investment-app.com</p>
+                    <p>受付時間: 平日 9:00-17:00（土日祝日を除く）</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <a href="mailto:privacy@investment-app.com" class="button">
+                        <span class="material-icons">email</span>メールでお問い合わせ
+                    </a>
+                    <a href="faq.html" class="button">
+                        <span class="material-icons">help</span>よくある質問
+                    </a>
+                </div>
+
+                <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                    お問い合わせの際は、お客様の安全のため、個人情報は必要最小限にとどめてください。
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 投資アプリ. すべての権利を保有しています。</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
+                本プライバシーポリシーは、お客様の個人情報保護のために策定されています。
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ナビゲーションのアクティブ状態管理
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.style.background = '';
+                item.style.color = '';
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.style.background = 'var(--primary-color)';
+                    item.style.color = 'white';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

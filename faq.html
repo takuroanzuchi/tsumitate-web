@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - 投資アプリ よくある質問</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        :root {
+            --primary-color: #6750A4;
+            --secondary-color: #625B71;
+            --background-color: #FEF7FF;
+            --surface-color: #FFFFFF;
+            --on-surface-color: #1D1B20;
+            --outline-color: #79747E;
+            --success-color: #4CAF50;
+            --warning-color: #FF9800;
+            --error-color: #F44336;
+            --info-color: #2196F3;
+            --border-radius: 12px;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: var(--on-surface-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #7C4DFF);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .search-section {
+            background: var(--surface-color);
+            padding: 30px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid var(--outline-color);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--outline-color);
+        }
+
+        .category-nav {
+            background: var(--surface-color);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--outline-color);
+        }
+
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .category-btn {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .faq-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .faq-item {
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--surface-color);
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--on-surface-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--background-color);
+        }
+
+        .faq-question.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .question-text {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .question-icon {
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .faq-question.active .question-icon {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .expand-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #F8F9FF, #F0F2FF);
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+        }
+
+        .answer-content {
+            padding: 25px;
+            border-top: 1px solid var(--outline-color);
+        }
+
+        .answer-content h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .answer-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .answer-content li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .answer-content li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+            border-left: 4px solid var(--info-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+            border-left: 4px solid var(--warning-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #E8F5E8, #C8E6C8);
+            border-left: 4px solid var(--success-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .contact-section {
+            background: var(--surface-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .contact-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .button:hover {
+            background: #5A3D9A;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(103, 80, 164, 0.3);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .category-buttons {
+                gap: 10px;
+            }
+            
+            .category-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .faq-question {
+                padding: 15px;
+            }
+            
+            .answer-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>
+                <span class="material-icons" style="font-size: 2.5rem;">help_center</span>
+                よくある質問
+            </h1>
+            <p>投資アプリの使い方に関するよくある質問と回答</p>
+        </div>
+    </header>
+
+    <div class="search-section">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="質問を検索..." id="searchInput">
+                <span class="material-icons search-icon">search</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-nav">
+        <div class="container">
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="all">
+                    <span class="material-icons">all_inclusive</span>すべて
+                </button>
+                <button class="category-btn" data-category="goals">
+                    <span class="material-icons">savings</span>積立目標
+                </button>
+                <button class="category-btn" data-category="simulation">
+                    <span class="material-icons">pie_chart</span>シミュレーション
+                </button>
+                <button class="category-btn" data-category="account">
+                    <span class="material-icons">account_circle</span>アカウント
+                </button>
+                <button class="category-btn" data-category="technical">
+                    <span class="material-icons">settings</span>技術的問題
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            <!-- 積立目標に関するFAQ -->
+            <div class="faq-section" data-category="goals">
+                <h2 class="section-title">
+                    <span class="material-icons">savings</span>積立目標について
+                </h2>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <div class="question-text">
+                            <span class="material-icons question-icon">help</span>
+                            積立目標はいくつまで作成できますか？
+                        </div>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="answer-content">
+                            <p>積立目標の作成数に制限はありません。ただし、効率的な管理のために以下をおすすめします：</p>
+                            <ul>
+                                <li>短期目標（1年以内）: 2-3個</li>
+                                <li>中期目標（1-5年）: 3-5個</li>
+                                <li>長期目標（5年以上）: 2-3個</li>
+                            </ul>
+                            <div class="info-box">
+                                <strong>ポイント：</strong>目標が多すぎると管理が大変になるため、優先度の高いものから始めることをおすすめします。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <div class="question-text">
+                            <span class="material-icons question-icon">help</span>
+                            目標を途中で変更できますか？
+                        </div>
+                        <span class="material-icons expand-more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="answer-content">
+                            <p>はい、目標の内容はいつでも変更可能です：</p>
+                            <ul>
+                                <li>目標名の変更</li>
+                                <li>目標金額の調整</li>
+                                <li>月々の積立額の変更</li>
+                                <li>達成予定日の修正</li>
+                            </ul>
+                            <div class="success-box">
+                                <strong>変更方法：</strong>目標詳細画面の「編集」ボタンから変更できます。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <div class="question-text">
+                            <span class="material-icons question-icon">help</span>
+                            実際の金額と予想金額の違いは？
+                        </div>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="answer-content">
+                            <h4><span class="material-icons">trending_up</span>予想金額</h4>
+                            <p>設定した月々の積立額と期間から自動計算される理論値です。</p>
+                            
+                            <h4><span class="material-icons">account_balance</span>実際の金額</h4>
+                            <p>ユーザーが手動で入力する実際の資産額です。より正確な進捗管理ができます。</p>
+                            
+                            <div class="info-box">
+                                <strong>おすすめ：</strong>月に1回程度、実際の金額を更新することで、より精度の高い目標管理ができます。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ポートフォリオシミュレーションに関するFAQ -->
+            <div class="faq-section" data-category="simulation">
+                <h2 class="section-title">
+                    <span class="material-icons">pie_chart</span>ポートフォリオシミュレーション
+                </h2>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <div class="question-text">
+                            <span class="material-icons question-icon">help</span>
+                            期待リターンはどう設定すればよいですか？
+                        </div>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="answer-content">
+                            <p>期待リターンの目安：</p>
+                            <ul>
+                                <li><strong>保守的（2-4%）:</strong> 国債、定期預金中心</li>
+                                <li><strong>バランス型（4-6%）:</strong> 株式と債券の組み合わせ</li>
+                                <li><strong>積極的（6-8%）:</strong> 株式中心のポートフォリオ</li>
+                                <li><strong>ハイリスク（8%以上）:</strong> 成長株、新興国株式など</li>
+                            </ul>
+                            <div class="warning-box">
+                                <strong>注意：</strong>過去の実績を参考にして、現実的な数値を設定してください。高すぎる期待リターンは非現実的な結果を生みます。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <div class="question-text">
+                            <span class="material-icons question-icon">help</span>
+                            シミュレーション結果の信頼性は？
+                        </div>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="answer-content">
+                            <p>シミュレーション結果は<strong>参考値</strong>として活用してください：</p>
+                            
+                            <h4><span class="material-icons">check_circle</span>考慮されていること</h4>
+                            <ul>
+                                <li>複利効果の計算</li>
+                                <li>定期積立の効果</li>
+                                <li>時間による資産成長</li>
+                            </ul>
+                            
+                            <h4><span class="material-icons">warning</span>考慮されていないこと</h4>
+                            <ul>
+                                <li>市場の変動リスク</li>
+                                <li>インフレーション</li>
+                                <li>税金や手数料</li>
+                                <li>経済情勢の変化</li>
+                            </ul>
+                            
+                            <div class="warning-box">
+                                <strong>重要：</strong>実際の投資結果は市場状況により大きく異なる場合があります。投資判断は必ず専門家にご相談ください。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <div class="question-text">
+                            <span class="material-icons question-icon">help</span>
+                            複数のシミュレーションを比較したい
+                        </div>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="answer-content">
+                            <p>異なる条件でシミュレーションを作成し、結果を比較することをおすすめします：</p>
+                            
+                            <h4><span class="material-icons">compare</span>比較のポイント</h4>
+                            <ul>
+                                <li>積立額を変えた場合の違い</li>
+                                <li>期間を延ばした場合の効果</li>
+                                <li>リスク許容度による期待リターンの差</li>
+                                <li>一時金投資と積立投資の比較</li>
+                            </ul>
+                            
+                            <div class="success-box">
+                                <strong>活用法：</strong>複数のシナリオを作成して、最適な投資戦略を見つけましょう。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- アカウント・データ管理に関するFAQ -->
+            <div class="faq-section" data-category="account">
+                <h2 class="section-title">
+                    <span class="material-icons">account_circle</span>アカウント・データ管理
+                </h2>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <div class="question-text">
+                            <span class="material-icons question-icon">help</span>
+                            データのバックアップはどうなっていますか？
+                        </div>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="answer-content">
+                            <p>現在のデータ保存方式：</p>
+                            
+                            <h4><span class="material-icons">smartphone</span>ローカル保存</h4>
+                            <ul>
+                                <li>データは端末内に保存されます</li>
+                                <li>アプリを削除するとデータも削除されます</li>
+                                <li>機種変更時は手動でのデータ移行が必要です</li>
+                            </ul>
+                            
+                            <div class="warning-box">
+                                <strong>重要：</strong>定期的に目標やシミュレーション結果のスクリーンショットを保存することをおすすめします。
+                            </div>
+                            
+                            <div class="info-box">
+                                <strong>今後の予定：</strong>クラウド同期機能の追加を検討中です。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <div class="question-text">
+                            <span class="material-icons question-icon">help</span>
+                            機種変更時のデータ移行方法は？
+                        </div>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="answer-content">
+                            <p>現在は手動での移行が必要です：</p>
+                            
+                            <h4><span class="material-icons">backup</span>移行前の準備</h4>
+                            <ul>
+                                <li>目標一覧のスクリーンショット撮影</li>
+                                <li>各目標の詳細情報を記録</li>
+                                <li>シミュレーション結果の保存</li>
+                                <li>設定内容のメモ</li>
+                            </ul>
+                            
+                            <h4><span class="material-icons">phone_android</span>新端末での設定</h4>
+                            <ul>
+                                <li>アプリをインストール</li>
+                                <li>記録した情報を元に目標を再作成</li>
+                                <li>シミュレーションを再実行</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技術的問題に関するFAQ -->
+            <div class="faq-section" data-category="technical">
+                <h2 class="section-title">
+                    <span class="material-icons">settings</span>技術的問題
+                </h2>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <div class="question-text">
+                            <span class="material-icons question-icon">help</span>
+                            アプリが重い・動作が遅い
+                        </div>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="answer-content">
+                            <h4><span class="material-icons">speed</span>改善方法</h4>
+                            <ul>
+                                <li>アプリを完全に終了して再起動</li>
+                                <li>端末の再起動</li>
+                                <li>他のアプリを終了してメモリを確保</li>
+                                <li>アプリを最新版に更新</li>
+                                <li>端末の空き容量を確保</li>
+                            </ul>
+                            
+                            <div class="info-box">
+                                <strong>推奨環境：</strong>
+                                <br>• iOS 12.0以降 / Android 7.0以降
+                                <br>• 空き容量 100MB以上
+                                <br>• RAM 2GB以上
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <div class="question-text">
+                            <span class="material-icons question-icon">help</span>
+                            データが表示されない・消えた
+                        </div>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="answer-content">
+                            <h4><span class="material-icons">troubleshoot</span>対処方法</h4>
+                            <ul>
+                                <li>アプリを完全に終了して再起動</li>
+                                <li>端末の再起動</li>
+                                <li>ネットワーク接続の確認</li>
+                                <li>アプリの権限設定を確認</li>
+                            </ul>
+                            
+                            <div class="warning-box">
+                                <strong>データが復旧しない場合：</strong>
+                                <br>残念ながらローカル保存のため、完全な復旧は困難です。今後はこまめなスクリーンショット保存をおすすめします。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <div class="question-text">
+                            <span class="material-icons question-icon">help</span>
+                            アプリがクラッシュする
+                        </div>
+                        <span class="material-icons expand-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="answer-content">
+                            <h4><span class="material-icons">bug_report</span>対処手順</h4>
+                            <ul>
+                                <li>アプリを最新版に更新</li>
+                                <li>端末の再起動</li>
+                                <li>他のアプリを終了</li>
+                                <li>端末の空き容量を確保</li>
+                                <li>アプリを一度削除して再インストール（データは失われます）</li>
+                            </ul>
+                            
+                            <div class="info-box">
+                                <strong>報告をお願いします：</strong>
+                                <br>クラッシュが頻発する場合は、端末の機種名とOSバージョンをご連絡ください。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- お問い合わせセクション -->
+            <div class="contact-section">
+                <h2><span class="material-icons">contact_support</span>他にご質問がございますか？</h2>
+                <p>上記で解決しない問題がございましたら、お気軽にお問い合わせください。</p>
+                <div style="margin-top: 20px;">
+                    <a href="mailto:support@investment-app.com" class="button">
+                        <span class="material-icons">email</span>メールでお問い合わせ
+                    </a>
+                    <a href="usage-guide.html" class="button" style="background: var(--info-color);">
+                        <span class="material-icons">help</span>使い方ガイドを見る
+                    </a>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--secondary-color);">
+                    通常1-2営業日以内にご返信いたします
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 投資アプリ. すべての権利を保有しています。</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
+                よくある質問は随時更新されます。最新情報をご確認ください。
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ項目の開閉機能
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+                
+                // 他のFAQを閉じる
+                document.querySelectorAll('.faq-question.active').forEach(activeQuestion => {
+                    if (activeQuestion !== question) {
+                        activeQuestion.classList.remove('active');
+                        activeQuestion.nextElementSibling.classList.remove('active');
+                    }
+                });
+                
+                // 選択されたFAQの開閉
+                if (isActive) {
+                    question.classList.remove('active');
+                    answer.classList.remove('active');
+                } else {
+                    question.classList.add('active');
+                    answer.classList.add('active');
+                }
+            });
+        });
+
+        // カテゴリーフィルター機能
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+                
+                // アクティブボタンの切り替え
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // セクションの表示/非表示
+                document.querySelectorAll('.faq-section').forEach(section => {
+                    if (category === 'all') {
+                        section.classList.remove('hidden');
+                    } else {
+                        if (section.dataset.category === category) {
+                            section.classList.remove('hidden');
+                        } else {
+                            section.classList.add('hidden');
+                        }
+                    }
+                });
+                
+                // 開いているFAQを閉じる
+                document.querySelectorAll('.faq-question.active').forEach(question => {
+                    question.classList.remove('active');
+                    question.nextElementSibling.classList.remove('active');
+                });
+            });
+        });
+
+        // 検索機能
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const questionText = item.querySelector('.question-text').textContent.toLowerCase();
+                const answerText = item.querySelector('.answer-content').textContent.toLowerCase();
+                
+                if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = searchTerm === '' ? 'block' : 'none';
+                }
+            });
+            
+            // 検索時はすべてのセクションを表示
+            if (searchTerm !== '') {
+                document.querySelectorAll('.faq-section').forEach(section => {
+                    section.classList.remove('hidden');
+                });
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector('.category-btn[data-category="all"]').classList.add('active');
+            }
+        });
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
